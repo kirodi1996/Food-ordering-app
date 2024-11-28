@@ -18,3 +18,18 @@
     - useEffect
 - When the state variable update, React rerender the component
 - Find out the diffr between two object is fast comparitively two find out diff between two DOM nodes, React follow same rule.
+- Two ways of render the DOM 
+    - Loads ==> API ==> render
+    - Load ==> render ==> API ==> render (better UX experience)
+- React render cycle is very fast
+- useEffect() will be called after the component renders
+- Shimmer UI
+- Conditional rendering - render diff component based on condition <Shimmer>
+- Why do we create state variable (useState) 
+- whenever state variable update, react triggers a reconcilliation cycle (rerenders).
+
+# chapter 7
+- useEffect is called after every component render, but dependency array change the behavior of this function
+- Only callback function in mandatory.
+- never create useState var outside the functional component or inside if else / function
+- React router dom lib

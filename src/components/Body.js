@@ -1,25 +1,45 @@
-import { useState } from 'react';
-import {RESTAURANT_DATA} from '../constants/restaurant-data';
+import { useState, useEffect } from 'react';
 import RestaurantCard from './RestaurantCard';
+import Shimmer from './shimmer';
+import { SWIGGY_API_URL } from '../constants/api-url';
 
 export const Body = () => {
-    const [filterData, setFilterData] = useState(RESTAURANT_DATA?.data?.cards[4].card.card.gridElements.infoWithStyle.restaurants)
+    const [listOfRest, setListOfRest] = useState([]);
+    const [filterData, setFilterData] = useState([]);
+    const [searchText, setSearchText] = useState('');
+
+    const fetchData = async () => {
+        const data = await fetch(SWIGGY_API_URL);
+        const json = await data.json()
+        setFilterData(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setListOfRest(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    }
+    
+    useEffect(() => {
+        fetchData();
+    }, [])
+    
+
     return (
+        // conditional rendering
+        !filterData?.length ? <Shimmer /> :
         <div className='body'>
-            {/* <div className='Search'>Search</div> */}
-            
-            <button 
-                className='p-4' 
-                onClick={() => {
-                    console.log(RESTAURANT_DATA.data)
-                    const data = filterData.filter(data => data?.info?.avgRating > 4.2)
-                    setFilterData(data);
-                }}
-            >Top rated restaurant</button>
+            <div className='flex'>
+                <input type='text' onChange={(e)=> {setSearchText(e.target.value)}} value={searchText} className='' placeholder='search'/>
+                <button onClick={() => {
+                    setFilterData(listOfRest.filter((res) => res.info.name.toLowerCase().includes(searchText.toLocaleLowerCase())))
+                }}>Search</button>
+                <button 
+                    className='p-4' 
+                    onClick={() => {
+                        const data = filterData.filter(data => data?.info?.avgRating > 4.2)
+                        setFilterData(data);
+                }}>Top rated restaurant</button>
+            </div>
 
             <div className='res-container flex'>
                 {
-                    filterData.map((data)=> (
+                    filterData?.map((data)=> (
                         <RestaurantCard key={data?.info?.id}
                         resData={data}
                     />
