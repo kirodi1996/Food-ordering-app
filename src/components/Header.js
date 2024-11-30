@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { HEADER_LOGO } from "../constants/header-constants"
+import { Link } from "react-router-dom";
 
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,9 +19,15 @@ const Header = () => {
             </div>
             <div className=''>
                 <ul className='flex text-gray-700'>
-                    <li className='mr-6'>Home</li>
-                    <li className='mr-6'>About us</li>
-                    <li className='mr-6'>Contact us</li>
+                    <li className='mr-6'>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li className='mr-6'>
+                       <Link to="/about">About us</Link>
+                    </li>
+                    <li className='mr-6'>
+                        <Link to="/contact">Contact us</Link>
+                    </li>
                     <li className='mr-6'>Cart</li>
                     <li className='cursor-pointer' onClick={() => {setIsLoggedIn(!isLoggedIn)}}>
                         {isLoggedIn? 'Logout' : 'Login'}

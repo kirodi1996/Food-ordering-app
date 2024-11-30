@@ -33,3 +33,19 @@
 - Only callback function in mandatory.
 - never create useState var outside the functional component or inside if else / function
 - React router dom lib
+- npm i react-router-dom to install react router
+- import createBrowserRouter and pass route config in this
+- pass routing config to RouterProvider
+- root.render(<RouterProvider router={appRouter} />);
+- there are some other routers as well.. read more from website
+- React router dom gives us access to hook useRouterError, this will display a better msg
+- Children routes in react
+    - place <Outlet /> tag for children element
+    - write children config in appRouter
+- Link about contact us with route 
+    - import Link from react-router-dom and use as anchor tag in html <Link to="/about">About us</Link>
+- Two types of routing present in web apps
+    - server side
+    - client side
+- For dynamic route path - route_path/:id
+- useParam hook for fetching url params

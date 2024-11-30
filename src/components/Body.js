@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import RestaurantCard from './RestaurantCard';
-import Shimmer from './shimmer';
 import { SWIGGY_API_URL } from '../constants/api-url';
+import Shimmer from './Shimmer';
+import { Link } from 'react-router-dom';
 
 export const Body = () => {
     const [listOfRest, setListOfRest] = useState([]);
@@ -40,9 +41,11 @@ export const Body = () => {
             <div className='res-container flex'>
                 {
                     filterData?.map((data)=> (
+                       <Link key={data.info.id} to={'restaurant/' + data.info.id}>
                         <RestaurantCard key={data?.info?.id}
-                        resData={data}
-                    />
+                            resData={data}
+                        />
+                       </Link> 
                     ))
                 }
             </div>
