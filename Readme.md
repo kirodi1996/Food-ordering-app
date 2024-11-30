@@ -49,3 +49,22 @@
     - client side
 - For dynamic route path - route_path/:id
 - useParam hook for fetching url params
+
+# chapter 8
+
+- Class based components 
+    - extends React.Component
+    - render method in class based component which will return JSX 
+    - We create a constructor to receive props and call super(props) - why?
+    - create state variable inside constructor
+    - Update the state variable - this.setState()
+- Life cycle methods of class based component
+- first constructor is called and then render method call
+- componentDidMount hook - To make api call
+- series of function call - constructor -> render -> componentDidMount
+
+- series of fn call in case of parent child relationship
+    - parent constructor -> parent render -> child constructor -> child render -> child did Mount -> Parent did mount
+- componentDidMount works in single batch to make dom manipulation in single phase
+
+- function component - which return some piece of JSX
