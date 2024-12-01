@@ -28,6 +28,9 @@ const Header = () => {
                     <li className='mr-6'>
                         <Link to="/contact">Contact us</Link>
                     </li>
+                    <li className='mr-6'>
+                        <Link to="/grocery">Grocery</Link>
+                    </li>
                     <li className='mr-6'>Cart</li>
                     <li className='cursor-pointer' onClick={() => {setIsLoggedIn(!isLoggedIn)}}>
                         {isLoggedIn? 'Logout' : 'Login'}

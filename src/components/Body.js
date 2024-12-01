@@ -3,8 +3,9 @@ import RestaurantCard from './RestaurantCard';
 import { SWIGGY_API_URL } from '../constants/api-url';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
+import useOnlineStatus from '../hooks/useOnlineStatus';
 
-export const Body = () => {
+const Body = () => {
     const [listOfRest, setListOfRest] = useState([]);
     const [filterData, setFilterData] = useState([]);
     const [searchText, setSearchText] = useState('');
@@ -20,6 +21,9 @@ export const Body = () => {
         fetchData();
     }, [])
     
+    const onlineStatus = useOnlineStatus();
+
+    if(!onlineStatus) return <h1>Looks like your internet is not working</h1>
 
     return (
         // conditional rendering
@@ -52,3 +56,5 @@ export const Body = () => {
         </div>
     )
 }
+
+export default Body;

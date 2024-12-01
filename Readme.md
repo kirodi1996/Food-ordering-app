@@ -66,5 +66,14 @@
 - series of fn call in case of parent child relationship
     - parent constructor -> parent render -> child constructor -> child render -> child did Mount -> Parent did mount
 - componentDidMount works in single batch to make dom manipulation in single phase
+- three cycle happen in react 
+ mounting -> updating -> unmounting
 
 - function component - which return some piece of JSX
+- useEffect can't be async why?
+
+# chapter 9
+- Single responsibility principle
+- Custom hooks
+- Chunking / Code splitting // Dynamic bundling
+- Lazy loading
